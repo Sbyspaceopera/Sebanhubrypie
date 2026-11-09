@@ -11,7 +11,7 @@ header {
   background-color: var(--blanc);
 }
 
-.header-logo {
+.header-logo, .header-logo-link {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

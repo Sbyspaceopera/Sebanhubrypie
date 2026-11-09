@@ -2,6 +2,8 @@ import './Header.css'
 import logo from '../assets/Logo.png'
 import icone from '../assets/icone.png'
 
+import { Link } from 'react-router'
+
 function Header({ onMenuClick, onProfileClick }) {
   return (
     <header>
@@ -13,11 +15,13 @@ function Header({ onMenuClick, onProfileClick }) {
         ☰
       </button>
 
-      <img
-        className="header-logo"
-        src={logo}
-        alt="Logo Sebanhubrypie"
-      />
+      <Link className='header-logo-link' to="/">
+        <img
+          className="header-logo"
+          src={logo}
+          alt="Logo Sebanhubrypie"
+        />
+      </Link>
 
       <button
         className="profile-button"

@@ -1,6 +1,7 @@
 import './GameCard.css'
+import { Link } from 'react-router'
 
-function GameCard({ nom, description, joueurs }) {
+function GameCard({ nom, description, joueurs, path }) {
   return (
     <article className="game-card">
       <div className="game-illustration">
@@ -13,9 +14,11 @@ function GameCard({ nom, description, joueurs }) {
           <span>{joueurs} joueur{joueurs > 1 ? 's' : ''}</span>
         </div>
 
-        <button className="play-button" disabled>
-          Jouer
-        </button>
+        <Link to={path}>
+          <button className="play-button">
+            Jouer
+          </button>
+        </Link>
       </div>
     </article>
   )

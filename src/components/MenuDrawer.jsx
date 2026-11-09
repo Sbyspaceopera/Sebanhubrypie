@@ -1,11 +1,12 @@
 import './MenuDrawer.css'
 import { House, UserRound, X } from 'lucide-react'
 import logo from '../assets/Logo.png'
+import { Link } from 'react-router'
+
+import { GAMES } from '../constants'
 
 function MenuDrawer({ isOpen, onClose, onProfileClick }) {
   if (!isOpen) return null
-
-  const games = ['Snake', 'Échecs', 'Dames', 'Démineur']
 
   return (
     <div className="menu-overlay" onClick={onClose}>
@@ -14,10 +15,12 @@ function MenuDrawer({ isOpen, onClose, onProfileClick }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="menu-top">
-          <div className="menu-brand">
-            <img src={logo} alt="Logo" />
-            <strong>Sebanhubrypie</strong>
-          </div>
+            <Link to="/">
+              <div className="menu-brand">
+                  <img src={logo} alt="Logo" /> 
+                  <strong>Sebanhubrypie</strong>
+              </div>
+            </Link>
 
           <button
             className="menu-close"
@@ -29,18 +32,22 @@ function MenuDrawer({ isOpen, onClose, onProfileClick }) {
         </div>
 
         <nav className="menu-navigation">
-          <button className="menu-active" onClick={onClose}>
-            <House size={18} />
-            Accueil
-          </button>
-
+          <Link to="/">
+            <button className="menu-active" onClick={onClose}>
+              <House size={18} />
+              Accueil
+            </button>
+          </Link>
+          
           <h3>JEUX</h3>
 
-          {games.map((game) => (
-            <button key={game} onClick={onClose}>
-              <span className="game-dot"></span>
-              {game}
-            </button>
+          {GAMES.map((game) => (
+            <Link to={game.path}>
+              <button key={game.id} onClick={onClose}>
+                <span className="game-dot"></span>
+                {game.nom}
+              </button>
+            </Link>
           ))}
         </nav>
 
