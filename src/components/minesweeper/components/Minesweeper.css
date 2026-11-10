@@ -1,0 +1,10 @@
+.minesweeper-container{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 90px;
+    grid-template-areas:
+        "header header"
+        "game sidemenu";
+    width:auto;
+    background-color: inherit;
+}  
+

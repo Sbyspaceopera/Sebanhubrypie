@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5+Duo:ital,wght@0,100..900;1,100..900&display=swap');
+
+.minesweeper-launcher-container *{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    width: 100%;
+    font-family: "Tiny5 Duo", sans-serif;
+}
+
+.minesweeper-launcher-container{
+        display:flex;
+        flex-direction: column;
+        gap:1rem;
+        align-items: center;
+}
+.minesweeper-launcher-container > label{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+}
+
+
+.minesweeper-launcher-container button:hover{
+    cursor: pointer;
+}
+
+.minesweeper-play-button{
+    width:100px;
+    background-color: green;
+    color:var(--blanc)
+}
+
+.minesweeper-name-label{
+
+}
+
+.minesweeper-name-input{
+    width: 150px;
+    text-align: center;
+}
