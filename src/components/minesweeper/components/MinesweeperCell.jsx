@@ -2,7 +2,7 @@ import { useState } from "react"
 import './MinesweeperCell.css'
 import { FlagTriangleRightIcon } from "lucide-react"
 
-//Check all direct neighbours
+//Check all direct neighbours of type mine (-1) in the grid
 function calculateProximityScore(grid, position) {
   const [row, col] = position
   let score = 0
@@ -22,9 +22,10 @@ function calculateProximityScore(grid, position) {
   return score
 }
 
-export default function MinesweeperCell({gameOver, setScore, score, cellType, colIndex, grid, position, isFlagMode}){
+export default function MinesweeperCell({gameOver, setScore, score, cellType, grid, position, isFlagMode}){
     const [isReveal, setIsReveal] = useState(false);
     const [isFlagged, setIsFlagged] = useState(false);
+    const key = "X" + position[0] + "Y" + position[1];
 
     const proximityScore = calculateProximityScore(grid,position);
 
@@ -43,9 +44,8 @@ export default function MinesweeperCell({gameOver, setScore, score, cellType, co
     }
     
     return (
-        <button className={isReveal ? "minesweeper-cell minesweeper-active-cell" : "minesweeper-cell"} onClick={handleClick} key={colIndex} type="button">
-            {
-                isReveal ? 
+        <button className={isReveal ? "minesweeper-cell minesweeper-active-cell" : "minesweeper-cell"} onClick={handleClick} key={key} type="button">
+            {isReveal ? 
                     cellType === -1 ? "💣" : proximityScore
                 :
                     isFlagged ? <FlagTriangleRightIcon color="red" />  : ""

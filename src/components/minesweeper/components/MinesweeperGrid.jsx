@@ -2,27 +2,27 @@ import './MinesweeperGrid.css';
 
 import { useState } from "react"
 import MinesweeperCell from "./MinesweeperCell";
-import deserticBackground from '../../../assets/minesweeper/minesweeper-background.jpg'
+import deserticBackground from '/src/assets/minesweeper/minesweeper-background.jpg'
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-// 0 = no mine, -1 = mine
+//Cells containing the value : 0 = no mine, -1 = mine
 function createGrid(gridSize, minesNumber) {
     const grid = Array.from({ length: gridSize }, () =>
         Array(gridSize).fill(0)
     );
 
-    let placed = 0;
+    let placedMines = 0;
 
-    while (placed < minesNumber) {
+    while (placedMines < minesNumber) {
         const row = getRandomInt(gridSize);
         const col = getRandomInt(gridSize);
 
         if (grid[row][col] !== -1){
             grid[row][col] = -1;
-            placed++;
+            placedMines++;
         }
     }
 
@@ -30,8 +30,9 @@ function createGrid(gridSize, minesNumber) {
 }
 
 
-export default function MinesweeperGrid({isGameOver, gameOver, gridSize, minesNumber, setScore, score, isFlagMode}){
-    const [grid, setGrid] =  useState(() => createGrid(gridSize, minesNumber));
+export default function MinesweeperGrid({isGameOver, gameOver, gridSize, minesNumber,key, setScore, score, isFlagMode}){
+    const grid =  useState(() => createGrid(gridSize, minesNumber))[0];
+    const maxScore = (gridSize*gridSize) - minesNumber;
 
     const style = {
     "--grid-size": gridSize,
@@ -40,11 +41,11 @@ export default function MinesweeperGrid({isGameOver, gameOver, gridSize, minesNu
     };
 
     return (
-        <div className="minesweeper-grid-container" style={style}>
+        <section key={key} className="minesweeper-grid-container" style={style}>
 
         {grid.map((row, rowIndex) => (
             row.map((cell, colIndex) => (
-               <MinesweeperCell gameOver={gameOver} setScore={setScore} score={score} isFlagMode={isFlagMode} cellType={cell} colIndex={colIndex} grid={grid} position={[rowIndex,colIndex]} /> 
+               <MinesweeperCell gameOver={gameOver} setScore={setScore} score={score} isFlagMode={isFlagMode} cellType={cell} grid={grid} position={[rowIndex,colIndex]} /> 
             ))
             
         ))}
@@ -57,7 +58,16 @@ export default function MinesweeperGrid({isGameOver, gameOver, gridSize, minesNu
             null
         }
 
-        </div>
+        {score === maxScore
+            ?
+            <div className='minesweeper-gameover-modal'>
+                <h2>WIN</h2>
+            </div>
+            :
+            null
+        }
+
+        </section>
     )
 
 }

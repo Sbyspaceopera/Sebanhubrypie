@@ -2,15 +2,22 @@ import './MinesweeperLauncher.css'
 
 import Minesweeper from './components/Minesweeper';
 
+import { GAMES } from '/src/constants';
+
 import { useState } from 'react';
 
 export default function MinesweeperLauncher() {
     const [isLaunched, setIsLaunched] = useState(false);
-    const [pseudo, setPseudo] =  useState("");
+    const [pseudo, setPseudo] =  useState(localStorage.getItem('pseudo') ?? "");
 
-    const launchGame = () => {
+    const launchGame = (e) => {
+        e.preventDefault();
+
+        if (!pseudo) return;
+
+        incrementPartyCounter();
         setIsLaunched(true);
-    }
+    };
 
     const stopGame = () => {
         setIsLaunched(false);
@@ -18,29 +25,42 @@ export default function MinesweeperLauncher() {
 
     const pseudoHandler = (e) => {
         let str = e.target.value.trim()
-        if(str){
-            setPseudo(str)
-        };
+        setPseudo(str)
     }
 
+    const incrementPartyCounter = () => {
+        try{
+            const gameStats = JSON.parse(localStorage.getItem("gameStats")) ?? {};
+            const minesweeperKey = GAMES[3].nom;
+
+            gameStats[minesweeperKey] = (gameStats[minesweeperKey] ?? 0) + 1;
+
+            localStorage.setItem("gameStats", JSON.stringify(gameStats));
+            
+        }catch(e){
+            console.log(e)
+        }
+        
+        
+    }
     return (
         <div className="minesweeper-launcher-container">
         {isLaunched 
             ?
-            <Minesweeper playerName={pseudo} stopGame={stopGame} />
+            <Minesweeper incrementPartyCounter={incrementPartyCounter} playerName={pseudo} stopGame={stopGame} />
             :
-            <> 
-                <label className="minesweeper-name-label" for="pseudo">Ton pseudo :
-                    <input className='minesweeper-name-input' onChange={pseudoHandler} name="pseudo" type="text" placeholder="John Doe">
+            <form onSubmit={launchGame}> 
+                <label className="minesweeper-name-label" htmlFor="pseudo">Ton pseudo :
+                    <input className='minesweeper-name-input' onChange={pseudoHandler} name="pseudo" type="text" value={pseudo} placeholder="JohnDoe">
                     </input>
                 </label>
                 {pseudo
                 ?
-                <button className='minesweeper-play-button' onClick={launchGame}>Jouer</button>
+                <button className='minesweeper-play-button' type='submit'>Jouer</button>
                 :
                 null
                 }
-            </>
+            </form>
         }
         </div>
     )

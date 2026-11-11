@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { X, UserRound } from 'lucide-react'
 import './ProfileModal.css'
+import { GAMES } from '/src/constants'
 
 function ProfileModal({ onClose }) {
   const [pseudo, setPseudo] = useState(
@@ -14,8 +15,6 @@ function ProfileModal({ onClose }) {
       return {}
     }
   })
-
-  const games = ['Snake', 'Échecs', 'Dames', 'Démineur']
 
   function savePseudo() {
     const nouveauPseudo = pseudo.trim() || 'Joueur'
@@ -58,12 +57,12 @@ function ProfileModal({ onClose }) {
         <div className="profile-stats">
           <h3>Mes statistiques</h3>
 
-          {games.map((game) => {
-            const count = stats[game] || 0
+          {GAMES.map((game) => {
+            const count = stats[game.nom] || 0
 
             return (
-              <div className="stat-row" key={game}>
-                <span>{game}</span>
+              <div className="stat-row" key={game.id}>
+                <span>{game.nom}</span>
                 <span>
                   {count} {count > 1 ? 'parties jouées' : 'partie jouée'}
                 </span>

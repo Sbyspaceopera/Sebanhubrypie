@@ -1,5 +1,5 @@
 import './MinesweeperHeader.css'
-import headerBackground from '../../../assets/minesweeper/minesweeper-header-background.jpg'
+import headerBackground from '/src/assets/minesweeper/minesweeper-header-background.jpg'
 
 export default function MinesweeperHeader({restartGame, playerName, stopGame, score,topScore, MAX_SCORE}){
     const style={
