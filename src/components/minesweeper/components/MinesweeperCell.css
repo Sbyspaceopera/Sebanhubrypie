@@ -1,0 +1,11 @@
+.minesweeper-cell{
+    width:2rem;
+    height:2rem;
+    background-color: darkorange;
+    color:sandybrown;
+    border-radius: 0.5rem;
+}
+
+.minesweeper-cell.minesweeper-active-cell{
+    background-color: brown;
+}

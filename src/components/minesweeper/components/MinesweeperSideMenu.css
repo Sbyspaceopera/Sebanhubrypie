@@ -1,0 +1,16 @@
+.minesweeper-side-menu{
+    grid-area:sidemenu;
+    background-color:var(--prune-doux);
+    padding: 0.6rem;
+    border: 3px solid black;
+    display:grid;
+}
+
+.minesweeper-side-menu button{
+    width:2rem;
+    height:2rem;
+    padding:0.2rem;
+    border-radius:0.5rem;
+    background-color: var(--blanc);
+    box-shadow: 0 0 6px var(--blanc);
+}

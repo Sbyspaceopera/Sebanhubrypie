@@ -1,0 +1,53 @@
+.minesweeper-header {
+  grid-area:header;
+  width:100%;
+  background-color:var(--petale);
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap:0.6rem;
+  border-bottom: 3px solid black;
+}
+
+.minesweeper-header-buttons-container{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.minesweeper-quit-button{
+    width:200px;
+    border-radius: 1rem;
+    background-color: darkred;
+    color: var(--blanc);
+}
+
+.minesweeper-restart-button{
+    width:200px;
+    border-radius: 1rem;
+    background-color: darkblue;
+    color: var(--blanc);
+}
+
+.minesweeper-player-name{
+    font-size: 1.75rem;
+    padding:0.5rem;
+    color:red;
+    text-align: center;
+    background-color: black;
+    border: 2px solid darkred;
+
+}
+
+.minesweeper-score{
+    display:inline-block;
+    font-weight: bold;
+    text-align: center;
+    background-color: black;
+    width: 200px;
+    padding:1rem;
+    color:lightgreen;
+    border:1px solid green;
+
+}
