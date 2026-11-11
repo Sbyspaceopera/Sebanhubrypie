@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheesy chess 🧀</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+  </head>
+  <body>
+      <button id="theme-toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+    <div id="game-container">
+      <h1 id="title">Cheesy chess 🧀</h1>
+
+      <h1 id="turnIndicator">White's turn ⬜</h1>
+
+      <div id="board-wrapper">
+          <table id="board"></table>
+      </div>
+
+      <div id="controls">
+          <button id="surrender" onclick="surrender()">Surrender</button>
+          <button class="normalButton" onclick="proposeDraw()">Draw</button>
+      </div>
+      <button id="highlightButton" class="normalButton" onclick="highlightLastMove()">
+          Highlight last move
+      </button>
+    </div>
+  </body>
+</html>
