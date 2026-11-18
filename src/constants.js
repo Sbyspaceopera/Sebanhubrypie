@@ -34,5 +34,12 @@ export const GAMES = [
     description: 'Créé la vie avec des carrés',
     joueurs: 0,
     path: '/gameOfLife'
+  },
+  {
+    id: 6,
+    nom: 'Casse Briques',
+    description: 'Casser toutes les briques sans faire tomber la balle',
+    joueurs: 0,
+    path: '/brickBreaker'
   }
 ]

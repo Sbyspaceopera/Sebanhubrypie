@@ -6,6 +6,7 @@ import Layout from './components/Layout'
 import MinesweeperLauncher from './components/minesweeper/MinesweeperLauncher'
 import CheesyChess from './components/chess/CheesyChess'
 import GameOfLife from './components/gameOfLife/GameOfLife'
+import BrickBreaker from './components/brickBreaker/BrickBreaker'
 
 export default function App(){
 
@@ -18,6 +19,7 @@ export default function App(){
         <Route path="gameOfLife" element={<GameOfLife />} />
         <Route path="dames" element={<h2>Replace by the Gambits component</h2>} />
         <Route path="demineur" element={<MinesweeperLauncher />} />
+        <Route path="brickBreaker" element={<BrickBreaker />} />
       </Route>
     </Routes>
   )
