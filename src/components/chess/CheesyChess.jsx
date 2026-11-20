@@ -82,9 +82,9 @@ export default function CheesyChess() {
 
     function surrender() {
       const message =
-        "Are you sure you want to surrender ?\n(" +
-        (gameState.toPlay === 0 ? "black" : "white") +
-        " will win)";
+        "Êtes vous sûr de vouloir vous rendre ?\n(Les " +
+        (gameState.toPlay === 0 ? "noirs" : "blancs") +
+        " gagnerons)";
       if (window.confirm(message) === true) {
         changeTurn();
         win(gameState.toPlay);
@@ -94,14 +94,14 @@ export default function CheesyChess() {
     function win(winner) {
       endGame();
       turnIndicator.innerHTML =
-        (winner === 0 ? "White ⬜" : "Black ⬛") +
-        " won the game, congratulations !";
+        (winner === 0 ? "Les blancs ⬜" : "Les noirs ⬛") +
+        " ont gagné, félicitation !";
     }
 
     function proposeDraw() {
       const message =
-        (gameState.toPlay === 0 ? "White ⬜" : "Black ⬛") +
-        " is proposing a draw. Do you accept ?";
+        (gameState.toPlay === 0 ? "Les blancs ⬜" : "Les noirs ⬛") +
+        " proposent une égalité. Acceptez-vous ?";
       if (window.confirm(message) === true) {
         draw();
       }
@@ -109,7 +109,7 @@ export default function CheesyChess() {
 
     function draw() {
       endGame();
-      turnIndicator.innerHTML = "Draw !";
+      turnIndicator.innerHTML = "Egalité !";
     }
 
     function endGame() {
@@ -132,7 +132,7 @@ export default function CheesyChess() {
           (!board[row][column].isWhite && gameState.toPlay === 0)
         ) {
           window.alert(
-            "It's " + (gameState.toPlay === 0 ? "white" : "black") + "'s turn"
+            "C'est au tour des" + (gameState.toPlay === 0 ? "blancs" : "noirs")
           );
           return;
         }
@@ -154,7 +154,7 @@ export default function CheesyChess() {
       };
 
       if (!board[row][column].classList.contains("possibleMove")) {
-        window.alert("Illegal move");
+        window.alert("Movement illégal");
         unselect();
         return;
       }
@@ -164,7 +164,7 @@ export default function CheesyChess() {
 
       changeTurn();
       turnIndicator.innerHTML =
-        gameState.toPlay === 0 ? "White's turn ⬜" : "Black's turn ⬛";
+        gameState.toPlay === 0 ? "Au tour des blancs ⬜" : "Au tour des noirs ⬛";
 
       if (!canMove()) {
         if (isCheckFree()) {
@@ -249,7 +249,7 @@ export default function CheesyChess() {
         case "󰡙":
           return pawnCase(movement, caveats);
         default:
-          window.alert("Error");
+          window.alert("Erreur");
           return false;
       }
     }
@@ -444,7 +444,7 @@ export default function CheesyChess() {
       let answer;
       do {
         answer = window.prompt(
-          "Enter the piece you wanna promote to\n(Q/󰡚, B/󰡜, K/󰡘, R/󰡛)"
+          "Entrez la pièce en laquelle vous voulez promouvoir ce pion\n(Q/󰡚, B/󰡜, K/󰡘, R/󰡛)"
         );
         if (answer === "Q" || answer === "q" || answer === "󰡚") {
           board[row][column].innerHTML = "󰡚";
@@ -644,7 +644,7 @@ export default function CheesyChess() {
 
     function highlightLastMove() {
       if (gameState.lastMove === undefined) {
-        window.alert("No last move");
+        window.alert("Pas de mouvement précédent");
         return;
       }
       board[gameState.lastMove.from.row][
@@ -685,7 +685,7 @@ export default function CheesyChess() {
         <h1 id="title">Cheesy chess 🧀</h1>
 
         <h1 id="turnIndicator" ref={turnIndicatorRef}>
-          White's turn ⬜
+          Au tour des blancs ⬜
         </h1>
 
         <div id="board-wrapper">
@@ -699,13 +699,13 @@ export default function CheesyChess() {
                 id="surrender"
                 onClick={() => handlersRef.current.surrender?.()}
               >
-                Surrender
+                Se rendre
               </button>
               <button
                 className="normalButton"
                 onClick={() => handlersRef.current.proposeDraw?.()}
               >
-                Draw
+                Egalité
               </button>
             </>
           ) : (
@@ -713,7 +713,7 @@ export default function CheesyChess() {
               className="normalButton"
               onClick={() => window.location.reload()}
             >
-              Restart game
+              Reccomencer
             </button>
           )}
         </div>
@@ -722,7 +722,7 @@ export default function CheesyChess() {
           className="normalButton"
           onClick={() => handlersRef.current.highlightLastMove?.()}
         >
-          Highlight last move
+          Dernier movement
         </button>
       </div>
     </div>

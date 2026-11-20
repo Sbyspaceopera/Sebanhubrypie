@@ -34,12 +34,12 @@ export default function GameOfLife() {
 
     function createBoard() {
       let boardSize = Number(
-        window.prompt("Enter the board size\nDefault : 15") || 15
+        window.prompt("Entrez la taille de la grille\nValeur par défaut : 15") || 15
       );
       while (!isBetween(boardSize, 2, 100)) {
         boardSize = Number(
           window.prompt(
-            "The board size must be between 2 and 100\nEnter the board size"
+            "La taille doit être comprise entre 2 et 100\nEntrez la taille de la grille"
           ) || 15
         );
       }
@@ -168,12 +168,12 @@ export default function GameOfLife() {
     function setTps() {
       endContinuousTick();
       tps = Number(
-        window.prompt("Enter a number of ticks per second\n(default 3)") || 3
+        window.prompt("Entrez le nombre de ticks par seconde\n(par défaut : 3)") || 3
       );
       while (!isBetween(tps, 0.1, 10)) {
         tps = Number(
           window.prompt(
-            "The number of ticks per second must be between 0.1 and 10\nEnter the number of tps"
+            "Le nombre de ticks par seconde doit être compris entre 0.1 et 10\nEntrez le nombre de tps"
           ) || 3
         );
       }

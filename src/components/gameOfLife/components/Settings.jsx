@@ -4,10 +4,10 @@ export default function Settings({ onSetTps, onResize }) {
   return (
     <div className="settings">
       <button className="tps" onClick={onSetTps}>
-        Set TPS
+        Changer les TPS
       </button>
       <button className="resize" onClick={onResize}>
-        Resize board
+        Taille de la grille
       </button>
     </div>
   );

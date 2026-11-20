@@ -7,7 +7,7 @@ export default function StatsPanel() {
         Ticks: <span id="ticks">0</span>
       </div>
       <div className="stat-item">
-        Living Cells: <span id="livingCells">0</span>
+        Cellules vivantes: <span id="livingCells">0</span>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ export const GAMES = [
   {
     id: 5,
     nom: 'Jeu de la vie',
-    description: 'Créé la vie avec des carrés',
+    description: 'Créer la vie avec des carrés',
     joueurs: 0,
     path: '/gameOfLife'
   }

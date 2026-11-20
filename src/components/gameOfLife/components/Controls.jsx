@@ -4,16 +4,16 @@ export default function Controls({ onTick, onPlay, onPause, onReset }) {
   return (
     <div className="controls">
       <button id="tickB" onClick={onTick}>
-        Step
+        +1 Tick
       </button>
       <button id="playB" onClick={onPlay}>
-        Play
+        Reprendre
       </button>
       <button id="pauseB" onClick={onPause}>
         Pause
       </button>
       <button id="resetB" onClick={onReset}>
-        Reset
+        Reccomencer
       </button>
     </div>
   );
